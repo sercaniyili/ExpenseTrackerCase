@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ExpenseTracker.Case.CoreLayer.DTOs.Account;
+using ExpenseTracker.Case.CoreLayer.DTOs.Transaction;
 using ExpenseTracker.Case.CoreLayer.DTOs.User;
 using ExpenseTracker.Case.CoreLayer.Entities;
 using ExpenseTracker.Case.CoreLayer.Entities.Identity;
@@ -28,6 +29,14 @@ namespace ExpenseTracker.Case.CoreLayer.Mappings
             CreateMap<Account, AccountCreateDto>().ReverseMap();
             CreateMap<Account, AccountEditDto>().ReverseMap();
             CreateMap<Account, AccountDeleteDto>().ReverseMap();
+
+            //transaction
+            CreateMap<Transaction, TransactionListDto>()
+                  .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.ToString()));
+
+            CreateMap<Transaction, TransactionCreateDto>().ReverseMap();
+            CreateMap<Transaction, TransactionDeleteDto>().ReverseMap();
+
 
         }
     }

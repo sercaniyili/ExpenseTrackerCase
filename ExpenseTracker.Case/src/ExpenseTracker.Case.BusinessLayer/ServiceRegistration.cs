@@ -23,6 +23,7 @@ namespace ExpenseTracker.Case.BusinessLayer
             services.AddScoped<IUserRegisterService, UserRegisterManager>();
             services.AddScoped<IUserLoginService, UserLoginManager>();
             services.AddScoped<IAccountService, AccountManager>();
+            services.AddScoped<ITransactionService, TransactionManager>();
 
 
             //Auth configuration
