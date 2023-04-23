@@ -3,6 +3,7 @@ using ExpenseTracker.Case.CoreLayer.DTOs.Account;
 using ExpenseTracker.Case.CoreLayer.DTOs.Transaction;
 using ExpenseTracker.Case.CoreLayer.DTOs.User;
 using ExpenseTracker.Case.CoreLayer.Entities;
+using ExpenseTracker.Case.CoreLayer.Entities.Enums;
 using ExpenseTracker.Case.CoreLayer.Entities.Identity;
 using System;
 using System.Collections.Generic;
@@ -32,9 +33,13 @@ namespace ExpenseTracker.Case.CoreLayer.Mappings
 
             //transaction
             CreateMap<Transaction, TransactionListDto>()
-                  .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.ToString()));
+                  .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.ToString()))
+                   .ForMember(dest => dest.AmountWithCurrency, opt => opt.MapFrom(src => $"{src.Amount} {src.Account.Currency}"));
 
-            CreateMap<Transaction, TransactionCreateDto>().ReverseMap();
+            CreateMap<Transaction, TransactionCreateDto>()
+               //.ForMember(dest => dest.TransactionType, opt => opt.MapFrom(src => (TransactionType)src.TransacitonType))
+                //.ForMember(dest => dest.TransactionType, opt => opt.MapFrom(src => src.TransacitonType == TransactionType.Input ? "Input" : "Output"))
+                .ReverseMap();
             CreateMap<Transaction, TransactionDeleteDto>().ReverseMap();
 
 

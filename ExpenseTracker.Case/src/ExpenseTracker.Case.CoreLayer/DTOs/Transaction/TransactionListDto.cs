@@ -18,7 +18,8 @@ namespace ExpenseTracker.Case.CoreLayer.DTOs.Transaction
             get => _createDate.ToString("yyyy-MM-dd");
             set => _createDate = DateTime.Parse(value);
         }
-        public float Amount { get; set; }
+        public string AmountWithCurrency { get; set; }
         public string Category { get; set; }
+
     }
 }

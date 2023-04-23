@@ -11,6 +11,7 @@ namespace ExpenseTracker.Case.CoreLayer.DTOs.Transaction
     {
         public Category Category { get; set; }
         public float Amount { get; set; }
+       // public TransactionType TransactionType { get; set; }
         public int AccountId { get; set; }
     }
 }

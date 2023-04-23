@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracker.Case.CoreLayer.Interfaces.Repositories
 {
-    public interface ITransactionRepository : IBaseRepository<Transaction> { }
+    public interface ITransactionRepository : IBaseRepository<Transaction> 
+    {
+        public Task<Account> FindAccountById(int id);
+        public Task<int> SaveTransactionChangesAsync();
+    }
 
 }

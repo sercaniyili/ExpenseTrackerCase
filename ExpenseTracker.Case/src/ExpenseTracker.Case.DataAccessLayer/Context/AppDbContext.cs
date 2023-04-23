@@ -14,6 +14,7 @@ namespace ExpenseTracker.Case.DataAccessLayer.Context
 {
     public class AppDbContext : IdentityDbContext<AppUser, IdentityRole<int>, int>
     {
+ 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<AppUser> Users { get; set; }

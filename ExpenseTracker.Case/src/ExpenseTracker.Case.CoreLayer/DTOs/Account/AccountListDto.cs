@@ -22,5 +22,7 @@ namespace ExpenseTracker.Case.CoreLayer.DTOs.Account
         }
         public string  UserName{ get; set; }
 
+        public float Balance { get; set; }
+
     }
 }
