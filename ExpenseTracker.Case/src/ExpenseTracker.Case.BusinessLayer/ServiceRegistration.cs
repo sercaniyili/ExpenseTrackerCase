@@ -1,4 +1,6 @@
-﻿using ExpenseTracker.Case.BusinessLayer.Managers.User;
+﻿using ExpenseTracker.Case.BusinessLayer.Managers;
+using ExpenseTracker.Case.BusinessLayer.Managers.User;
+using ExpenseTracker.Case.CoreLayer.Interfaces.Services.Account;
 using ExpenseTracker.Case.CoreLayer.Interfaces.Services.User;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -20,6 +22,7 @@ namespace ExpenseTracker.Case.BusinessLayer
         {
             services.AddScoped<IUserRegisterService, UserRegisterManager>();
             services.AddScoped<IUserLoginService, UserLoginManager>();
+            services.AddScoped<IAccountService, AccountManager>();
 
 
             //Auth configuration

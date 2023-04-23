@@ -24,6 +24,12 @@ namespace ExpenseTracker.Case.DataAccessLayer.Repositories
             return await _dbSet.ToListAsync();
         }
 
+        public IQueryable<T> GetAllAsyncQueryable()
+        {
+            return  _dbSet.AsQueryable();
+        }
+
+
         public async Task<T> GetByIdAsync(int id)
         {
             return await _dbSet.FindAsync(id);
@@ -49,6 +55,7 @@ namespace ExpenseTracker.Case.DataAccessLayer.Repositories
             var entity = await _dbSet.FindAsync(id);
             _dbSet.Remove(entity);
             await _appDbContext.SaveChangesAsync();
+
         }
         public async Task<T> UpdateAsync(T entity)
         {
@@ -56,5 +63,7 @@ namespace ExpenseTracker.Case.DataAccessLayer.Repositories
             await _appDbContext.SaveChangesAsync();
             return entity;
         }
+
+       
     }
 }

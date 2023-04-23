@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using ExpenseTracker.Case.CoreLayer.DTOs.Account;
 using ExpenseTracker.Case.CoreLayer.DTOs.User;
+using ExpenseTracker.Case.CoreLayer.Entities;
 using ExpenseTracker.Case.CoreLayer.Entities.Identity;
 using System;
 using System.Collections.Generic;
@@ -13,8 +15,19 @@ namespace ExpenseTracker.Case.CoreLayer.Mappings
     {
         public MappingProfiles()
         {
+            //user
             CreateMap<AppUser, UserRegisterDto>().ReverseMap();
             CreateMap<AppUser, UserLoginDto>().ReverseMap();
+
+            //account
+            CreateMap<Account, AccountListDto>()
+                .ForMember(dest => dest.Currency, opt => opt.MapFrom(src => src.Currency.ToString()))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.AppUser.UserName))
+                .ReverseMap();
+
+            CreateMap<Account, AccountCreateDto>().ReverseMap();
+            CreateMap<Account, AccountEditDto>().ReverseMap();
+            CreateMap<Account, AccountDeleteDto>().ReverseMap();
 
         }
     }

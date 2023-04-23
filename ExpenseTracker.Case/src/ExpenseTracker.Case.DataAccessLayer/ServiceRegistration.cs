@@ -1,5 +1,7 @@
 ﻿using ExpenseTracker.Case.CoreLayer.Entities.Identity;
+using ExpenseTracker.Case.CoreLayer.Interfaces.Repositories;
 using ExpenseTracker.Case.DataAccessLayer.Context;
+using ExpenseTracker.Case.DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +30,11 @@ namespace ExpenseTracker.Case.DataAccessLayer
                 .AddEntityFrameworkStores<AppDbContext>();
 
 
+
+            //repos
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<IAccountRepository,AccountRepository>();
+            services.AddScoped<ITransactionRepository,TransactionRepository>(); 
 
             return services;
         }

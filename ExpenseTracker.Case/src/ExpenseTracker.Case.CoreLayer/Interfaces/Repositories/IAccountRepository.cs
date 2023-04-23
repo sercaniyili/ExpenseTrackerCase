@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 namespace ExpenseTracker.Case.CoreLayer.Interfaces.Repositories
 {
     public interface IAccountRepository : IBaseRepository<Account> { }
- 
+
 }

@@ -12,6 +12,7 @@ namespace ExpenseTracker.Case.CoreLayer.Interfaces.Repositories
     {
         //read
         Task<IEnumerable<T>> GetAllAsync();
+        IQueryable<T> GetAllAsyncQueryable();
         Task<T> GetByIdAsync(int id);
         Task<IEnumerable<T>> FindByAsync(Expression<Func<T, bool>> predicate);
        

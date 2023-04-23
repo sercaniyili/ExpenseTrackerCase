@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "3mW9nNqsU2DeRF/NeMMKE621xN37NPC30ykZkD43QDI=",
+  "Source": "ExpenseTracker.Case.WebAPI",
+  "BasePath": "_content/ExpenseTracker.Case.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
