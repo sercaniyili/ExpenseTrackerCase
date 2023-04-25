@@ -29,7 +29,6 @@ namespace ExpenseTracker.Case.CoreLayer.Mappings
 
             CreateMap<Account, AccountCreateDto>().ReverseMap();
             CreateMap<Account, AccountEditDto>().ReverseMap();
-            CreateMap<Account, AccountDeleteDto>().ReverseMap();
 
             //transaction
             CreateMap<Transaction, TransactionListDto>()
@@ -37,10 +36,12 @@ namespace ExpenseTracker.Case.CoreLayer.Mappings
                    .ForMember(dest => dest.AmountWithCurrency, opt => opt.MapFrom(src => $"{src.Amount} {src.Account.Currency}"));
 
             CreateMap<Transaction, TransactionCreateDto>()
-               //.ForMember(dest => dest.TransactionType, opt => opt.MapFrom(src => (TransactionType)src.TransacitonType))
-                //.ForMember(dest => dest.TransactionType, opt => opt.MapFrom(src => src.TransacitonType == TransactionType.Input ? "Input" : "Output"))
                 .ReverseMap();
-            CreateMap<Transaction, TransactionDeleteDto>().ReverseMap();
+
+            CreateMap<TransactionSearchDto, Transaction>()
+                 .ForMember(dest => dest.Amount, opt => opt.Ignore())
+                 .ForMember(dest => dest.Category, opt => opt.MapFrom(src => Enum.Parse<Category>(src.Category)));
+
 
 
         }

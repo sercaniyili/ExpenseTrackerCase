@@ -11,13 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLayer", "BusinessLa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{E57285A8-D3AC-480B-8D2C-4346CEAD21CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseTracker.Case.CoreLayer", "src\ExpenseTracker.Case.CoreLayer\ExpenseTracker.Case.CoreLayer.csproj", "{D6BF2357-3E32-4095-A48C-881A9F86A91B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.Case.CoreLayer", "src\ExpenseTracker.Case.CoreLayer\ExpenseTracker.Case.CoreLayer.csproj", "{D6BF2357-3E32-4095-A48C-881A9F86A91B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseTracker.Case.DataAccessLayer", "src\ExpenseTracker.Case.DataAccessLayer\ExpenseTracker.Case.DataAccessLayer.csproj", "{776A5775-C5F4-44DF-A479-C870AB8240FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.Case.DataAccessLayer", "src\ExpenseTracker.Case.DataAccessLayer\ExpenseTracker.Case.DataAccessLayer.csproj", "{776A5775-C5F4-44DF-A479-C870AB8240FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseTracker.Case.BusinessLayer", "src\ExpenseTracker.Case.BusinessLayer\ExpenseTracker.Case.BusinessLayer.csproj", "{86EE48C6-5F8D-4350-BFE1-AB5DD8EC9B46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.Case.BusinessLayer", "src\ExpenseTracker.Case.BusinessLayer\ExpenseTracker.Case.BusinessLayer.csproj", "{86EE48C6-5F8D-4350-BFE1-AB5DD8EC9B46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseTracker.Case.WebAPI", "src\ExpenseTracker.Case.WebAPI\ExpenseTracker.Case.WebAPI.csproj", "{EB3608C4-3219-4934-9655-15BF61E001F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.Case.WebAPI", "src\ExpenseTracker.Case.WebAPI\ExpenseTracker.Case.WebAPI.csproj", "{EB3608C4-3219-4934-9655-15BF61E001F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{DFABDEA6-4BA3-4E70-8C3E-16CF6D2F9EA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseTracker.Case.Test", "src\ExpenseTracker.Case.Test\ExpenseTracker.Case.Test\ExpenseTracker.Case.Test.csproj", "{47EBE966-CC78-4642-9DF8-D24531D1F3A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{EB3608C4-3219-4934-9655-15BF61E001F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB3608C4-3219-4934-9655-15BF61E001F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB3608C4-3219-4934-9655-15BF61E001F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47EBE966-CC78-4642-9DF8-D24531D1F3A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47EBE966-CC78-4642-9DF8-D24531D1F3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47EBE966-CC78-4642-9DF8-D24531D1F3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47EBE966-CC78-4642-9DF8-D24531D1F3A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +58,7 @@ Global
 		{776A5775-C5F4-44DF-A479-C870AB8240FA} = {41633D59-F0CF-454B-843C-4592ED03C16D}
 		{86EE48C6-5F8D-4350-BFE1-AB5DD8EC9B46} = {0BAED236-2170-4466-AF07-DD0F11EE772A}
 		{EB3608C4-3219-4934-9655-15BF61E001F0} = {E57285A8-D3AC-480B-8D2C-4346CEAD21CC}
+		{47EBE966-CC78-4642-9DF8-D24531D1F3A1} = {DFABDEA6-4BA3-4E70-8C3E-16CF6D2F9EA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DA96CD8B-D913-41E9-9BBF-C1CEAC73E7AE}

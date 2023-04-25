@@ -74,3 +74,6 @@ C:\Users\sercan\Desktop\Yazılım\HspExpenseTrackerCase\ExpenseTracker.Case\src\
 C:\Users\sercan\Desktop\Yazılım\HspExpenseTrackerCase\ExpenseTracker.Case\src\ExpenseTracker.Case.WebAPI\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\sercan\Desktop\Yazılım\HspExpenseTrackerCase\ExpenseTracker.Case\src\ExpenseTracker.Case.WebAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\sercan\Desktop\Yazılım\HspExpenseTrackerCase\ExpenseTracker.Case\src\ExpenseTracker.Case.WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\sercan\Desktop\Yazılım\HspExpenseTrackerCase\ExpenseTracker.Case\src\ExpenseTracker.Case.WebAPI\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\sercan\Desktop\Yazılım\HspExpenseTrackerCase\ExpenseTracker.Case\src\ExpenseTracker.Case.WebAPI\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\sercan\Desktop\Yazılım\HspExpenseTrackerCase\ExpenseTracker.Case\src\ExpenseTracker.Case.WebAPI\obj\Debug\net6.0\ExpenseTracker.Case.WebAPI.MvcApplicationPartsAssemblyInfo.cs

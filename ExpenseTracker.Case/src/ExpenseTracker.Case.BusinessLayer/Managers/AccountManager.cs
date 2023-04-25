@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using ExpenseTracker.Case.BusinessLayer.Validations.Account;
 using ExpenseTracker.Case.CoreLayer.DTOs.Account;
 using ExpenseTracker.Case.CoreLayer.Entities;
 using ExpenseTracker.Case.CoreLayer.Interfaces.Repositories;
 using ExpenseTracker.Case.CoreLayer.Interfaces.Services.Account;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -31,9 +33,14 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
             var mappedAccounts = _mapper.Map<IEnumerable<AccountListDto>>(accounts);
             return mappedAccounts;
         }
+
         public async Task<AccountCreateDto> CreateAccount(AccountCreateDto accountCreateDto)
         {
             var account = _mapper.Map<Account>(accountCreateDto);
+
+            AccountCreateDtoValidation validationRules = new AccountCreateDtoValidation();
+            validationRules.ValidateAndThrow(accountCreateDto);
+
             var mappedAccount = await _accountRepository.CreateAsync(account);
             var result = _mapper.Map<AccountCreateDto>(mappedAccount);
             return result;
@@ -46,6 +53,10 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
                 throw new ArgumentException($"{id} numaralı hesap bulunmamaktadır.");
 
             _mapper.Map(accountEditDto, account);
+
+            AccountEditDtoValidation validationRules = new AccountEditDtoValidation();
+            validationRules.ValidateAndThrow(accountEditDto);
+
             await _accountRepository.UpdateAsync(account);
 
             var updatedAccountDto = _mapper.Map<AccountEditDto>(account);
@@ -56,7 +67,7 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
         {
             var account = await _accountRepository.GetByIdAsync(id);
             if (account == null)
-                throw new ArgumentException($"Account with id {id} does not exist.");
+                throw new ArgumentException($"{id} numaralı hesap bulunmamaktadır.");
 
             await _accountRepository.DeleteAsync(id);
         }

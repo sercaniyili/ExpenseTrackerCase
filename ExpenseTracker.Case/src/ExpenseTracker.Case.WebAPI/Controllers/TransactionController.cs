@@ -61,5 +61,21 @@ namespace ExpenseTracker.Case.WebAPI.Controllers
             }
         }
 
+
+        [HttpGet("search")]
+        public async Task<IActionResult> GetTransactions([FromQuery] TransactionSearchDto TransactionSearchDto)
+        {
+            try
+            {
+                var transactions = await _transactionManager.SearchTransactions(TransactionSearchDto);
+                return Ok(transactions);
+
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
     }
 }

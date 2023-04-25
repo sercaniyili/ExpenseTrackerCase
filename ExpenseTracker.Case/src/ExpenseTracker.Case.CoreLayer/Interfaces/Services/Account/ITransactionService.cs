@@ -15,5 +15,7 @@ namespace ExpenseTracker.Case.CoreLayer.Interfaces.Services.Account
         Task<TransactionCreateDto> CreateTransaction(TransactionCreateDto  transactionCreateDto);
 
         Task DeleteTransaction(int id);
+
+        Task<IEnumerable<TransactionListDto>> SearchTransactions(TransactionSearchDto searchDto);
     }
 }

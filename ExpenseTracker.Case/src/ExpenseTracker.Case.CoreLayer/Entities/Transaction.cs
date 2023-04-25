@@ -14,7 +14,6 @@ namespace ExpenseTracker.Case.CoreLayer.Entities
         public float Amount { get; set; }
         public Category Category { get; set; }
 
-        //  public TransactionType TransacitonType { get; set; }
 
         //nav
         public int AccountId { get; set; }

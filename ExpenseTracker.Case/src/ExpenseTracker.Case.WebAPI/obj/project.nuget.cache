@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "nnoJOsURBmHYENVsDCLpiVKgsjfFwHuuU5XN9MG8ejw8haJ7dUc1PGCa0l2rSeOt/c6WV4VzcoyjJzcfwkbhAw==",
+  "dgSpecHash": "gK8Q9bZSAoeV9FsFhRauxR+1v4jZ0XKInBQg9ELZrx8kZqULCwP2GsIHIiqU5MNB8JB+r0gBtDEOgxSWsncLdw==",
   "success": true,
   "projectFilePath": "C:\\Users\\sercan\\Desktop\\Yazılım\\HspExpenseTrackerCase\\ExpenseTracker.Case\\src\\ExpenseTracker.Case.WebAPI\\ExpenseTracker.Case.WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sercan\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\sercan\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\sercan\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
+    "C:\\Users\\sercan\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.2\\fluentvalidation.dependencyinjectionextensions.11.5.2.nupkg.sha512",
     "C:\\Users\\sercan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\sercan\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.16\\microsoft.aspnetcore.authentication.jwtbearer.6.0.16.nupkg.sha512",
     "C:\\Users\\sercan\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.16\\microsoft.aspnetcore.cryptography.internal.6.0.16.nupkg.sha512",

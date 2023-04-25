@@ -2,6 +2,7 @@
 using ExpenseTracker.Case.BusinessLayer.Managers.User;
 using ExpenseTracker.Case.CoreLayer.Interfaces.Services.Account;
 using ExpenseTracker.Case.CoreLayer.Interfaces.Services.User;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +26,8 @@ namespace ExpenseTracker.Case.BusinessLayer
             services.AddScoped<IUserLoginService, UserLoginManager>();
             services.AddScoped<IAccountService, AccountManager>();
             services.AddScoped<ITransactionService, TransactionManager>();
+
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
 
             //Auth configuration
