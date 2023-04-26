@@ -8,7 +8,7 @@
  * ***XUnit***
  * ***Fluent Validation***
  * ***Moq***
- * ***Identity & JWT Bearer Tokens
+ * ***Identity & JWT Bearer Tokens***
  * ***N-tier Architecture***
  * ***Repository Pattern***
  * ***SOLID Principles***
