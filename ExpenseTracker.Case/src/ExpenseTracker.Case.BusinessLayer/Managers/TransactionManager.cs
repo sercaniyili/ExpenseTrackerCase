@@ -76,7 +76,11 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
             if (transactions == null)
                 throw new ArgumentException($"{id} numaralı işlem bulunmamaktadır.");
 
+            var account = await _transactionRepository.FindAccountById(transactions.AccountId);
+            account.Balance -= transactions.Amount;
+
             await _transactionRepository.DeleteAsync(id);
+            await _transactionRepository.SaveTransactionChangesAsync();
         }
 
         /// <summary>

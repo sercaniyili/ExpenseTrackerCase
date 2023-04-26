@@ -11,7 +11,7 @@ using System.Data;
 namespace ExpenseTracker.Case.WebAPI.Controllers
 {
     [Route("api/accounts")]
-    //[Authorize(Roles = "user")]
+    [Authorize(Roles = "user")]
     [ApiController]
     public class AccountController : ControllerBase
     {
