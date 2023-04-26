@@ -13,11 +13,13 @@ namespace ExpenseTracker.Case.Test.AccountService
     public class AccountEditTests
     {
         private readonly Mock<IAccountRepository> _mockAccountRepository;
+        private readonly Mock<ITransactionRepository>  _mockTransationRepository;
         private readonly IMapper _mapper;
 
         public AccountEditTests()
         {
             _mockAccountRepository = new();
+            _mockTransationRepository = new();
             var mapperConfig = new MapperConfiguration(c => { c.AddProfile(new MappingProfiles()); });
             _mapper = mapperConfig.CreateMapper();
         }
@@ -63,12 +65,9 @@ namespace ExpenseTracker.Case.Test.AccountService
 
             _mockAccountRepository.Setup(x => x.GetByIdAsync(nonExistentId)).ReturnsAsync((CoreLayer.Entities.Account)null);
 
-            var accountManager = new AccountManager(_mockAccountRepository.Object, _mapper);
+            var accountManager = new AccountManager(_mockAccountRepository.Object, _mockTransationRepository.Object, _mapper);
 
             //Act
-
-            //var result = await accountManager.EditAccount(nonExistentId,accountEditDto);
-
             //Assert
 
             await accountManager
@@ -101,7 +100,7 @@ namespace ExpenseTracker.Case.Test.AccountService
             _mockAccountRepository.Setup(x => x.UpdateAsync(It.IsAny<CoreLayer.Entities.Account>()))
                .ReturnsAsync((CoreLayer.Entities.Account editedAccount) => editedAccount);
 
-            var accountManager = new AccountManager(_mockAccountRepository.Object, _mapper);
+            var accountManager = new AccountManager(_mockAccountRepository.Object, _mockTransationRepository.Object, _mapper);
 
             //Act
 

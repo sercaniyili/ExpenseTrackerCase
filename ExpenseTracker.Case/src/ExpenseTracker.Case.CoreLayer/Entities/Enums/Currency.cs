@@ -10,6 +10,8 @@ namespace ExpenseTracker.Case.CoreLayer.Entities.Enums
     {
         USD=1,
         EUR,
-        TRY     
+        TRY,
+        GBP,
+        JPY
     }
 }

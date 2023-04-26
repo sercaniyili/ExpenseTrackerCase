@@ -17,5 +17,6 @@ namespace ExpenseTracker.Case.CoreLayer.Interfaces.Services.Account
         Task DeleteTransaction(int id);
 
         Task<IEnumerable<TransactionListDto>> SearchTransactions(TransactionSearchDto searchDto);
+
     }
 }

@@ -28,6 +28,12 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers.User
              _configuration = configuration;
         }
 
+        /// <summary>
+        /// Verilen kullanıcı bilgileri kullancı girişi sağlanır
+        /// </summary>
+        /// <param name="userLoginDto">kullanıcı bilgileri</param>
+        /// <returns>Kullancının giriş yaptığını gösteren bir JWT ve kullanıcı ad-eposta içeren dto</returns>
+        /// <exception cref="ArgumentException"></exception>
         public async Task<UserLoginResponseDto> LoginAsync(UserLoginDto userLoginDto)
         {
             var user = await _userManager.FindByEmailAsync(userLoginDto.Email);
@@ -45,6 +51,11 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers.User
             };          
         }
 
+        /// <summary>
+        /// Verilen kullanıcı için bir jwt token oluşturulur
+        /// </summary>
+        /// <param name="user">jwt oluşturulacak kullanıcı </param>
+        /// <returns>oluşturulan JWT</returns>
         private async Task<string> GenerateJwtTokenAsync(AppUser user)
         {
             var claims = new List<Claim>

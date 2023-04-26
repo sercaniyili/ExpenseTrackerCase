@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.Case.CoreLayer.DTOs.Account;
+using ExpenseTracker.Case.CoreLayer.DTOs.Transaction;
 using ExpenseTracker.Case.CoreLayer.Entities;
 using ExpenseTracker.Case.CoreLayer.Interfaces.Repositories;
 using System;
@@ -18,6 +19,7 @@ namespace ExpenseTracker.Case.CoreLayer.Interfaces.Services.Account
         Task<AccountEditDto> EditAccount(int id, AccountEditDto accountEditDto);
 
         Task DeleteAccount(int id);
+        Task<IEnumerable<TransactionListDto>> GetTransactionsByAccountIdAsync(int id);
 
     }
 }

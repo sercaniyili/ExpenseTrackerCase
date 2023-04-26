@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using ExpenseTracker.Case.BusinessLayer.Validations.Account;
 using ExpenseTracker.Case.CoreLayer.DTOs.Account;
+using ExpenseTracker.Case.CoreLayer.DTOs.Transaction;
 using ExpenseTracker.Case.CoreLayer.Entities;
 using ExpenseTracker.Case.CoreLayer.Interfaces.Repositories;
 using ExpenseTracker.Case.CoreLayer.Interfaces.Services.Account;
+using ExpenseTracker.Case.DataAccessLayer.Repositories;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,14 +20,20 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
     public class AccountManager : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
+        private readonly ITransactionRepository  _transactionRepository;
         private readonly IMapper _mapper;
 
-        public AccountManager(IAccountRepository accountRepository, IMapper mapper)
+        public AccountManager(IAccountRepository accountRepository, ITransactionRepository transactionRepository, IMapper mapper)
         {
             _accountRepository = accountRepository;
+            _transactionRepository = transactionRepository;
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Tüm hesapları ve ilgili kullanıcı bilgilerini listeler
+        /// </summary>
+        /// <returns>hesaplar</returns>
         public async Task<IEnumerable<AccountListDto>> GetAllAccounts()
         {
             var accounts = _accountRepository.GetAllAsyncQueryable()
@@ -34,6 +42,29 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
             return mappedAccounts;
         }
 
+        /// <summary>
+        /// Verilen hesap id'sine göre işlemleri listeler
+        /// </summary>
+        /// <param name="id">hesap id'si</param>
+        /// <returns>id'si verilen hesap ile ilişkili işlemler</returns>
+        public async Task<IEnumerable<TransactionListDto>> GetTransactionsByAccountIdAsync(int id)
+        {
+
+            var transactions = await _transactionRepository.GetAllAsyncQueryable()
+                .Where(x => x.AccountId == id)
+                 .Include(c => c.Account)
+                 .ToListAsync();
+            var mappedTransactions = _mapper.Map<IEnumerable<TransactionListDto>>(transactions);
+            var result = _mapper.Map<IEnumerable<TransactionListDto>>(mappedTransactions);
+            return result;
+        }
+
+        /// <summary>
+        /// Hesap oluşturulur, validasyonlar yapılır
+        /// </summary>
+        /// <param name="accountCreateDto">hesap oluşturmak için istenen girdiler</param>
+        /// <returns>oluşturulan hesap</returns>
+        /// validasyon olursa hata fırlatır
         public async Task<AccountCreateDto> CreateAccount(AccountCreateDto accountCreateDto)
         {
             var account = _mapper.Map<Account>(accountCreateDto);
@@ -46,6 +77,13 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
             return result;
         }
 
+        /// <summary>
+        /// Belirtilen id'ye sahip hesabın, AccountEditDto'da istenen özelliklerini günceller
+        /// </summary>
+        /// <param name="id">Güncellenecek hesabın id'si</param>
+        /// <param name="accountEditDto">Güncellenecek hesap girdileri</param>
+        /// <returns>Güncellenmiş hesap bilgileri</returns>
+        /// <exception cref="ArgumentException">belirtilen id'ye ait hep bulunamdığında</exception>
         public async Task<AccountEditDto> EditAccount(int id, AccountEditDto accountEditDto)
         {
             var account = await _accountRepository.GetByIdAsync(id);
@@ -63,6 +101,12 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
             return updatedAccountDto;
         }
 
+        /// <summary>
+        ///  Belirtilen id'ye sahip hesabı siler
+        /// </summary>
+        /// <param name="id">silinecek hesap id'si</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException">belirtilen id'ye sahip hesap yoksa<</exception>
         public async Task DeleteAccount(int id)
         {
             var account = await _accountRepository.GetByIdAsync(id);
@@ -71,5 +115,6 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
 
             await _accountRepository.DeleteAsync(id);
         }
+
     }
 }

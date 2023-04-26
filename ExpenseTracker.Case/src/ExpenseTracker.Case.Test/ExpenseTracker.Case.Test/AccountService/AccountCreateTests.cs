@@ -20,11 +20,13 @@ namespace ExpenseTracker.Case.Test.Account
     public class AccountCreateTests
     {
         private readonly Mock<IAccountRepository> _mockAccountRepository;
+        private readonly Mock<ITransactionRepository> _mockTransationRepository;
         private readonly IMapper _mapper;
 
         public AccountCreateTests()
         {
             _mockAccountRepository = new();
+            _mockTransationRepository = new();
             var mapperConfig = new MapperConfiguration(c => { c.AddProfile(new MappingProfiles()); });
             _mapper = mapperConfig.CreateMapper();
         }
@@ -71,7 +73,7 @@ namespace ExpenseTracker.Case.Test.Account
             _mockAccountRepository.Setup(x => x.CreateAsync(It.IsAny<CoreLayer.Entities.Account>()))
                 .ReturnsAsync((CoreLayer.Entities.Account createdAccount) => createdAccount);
 
-           var accountManager = new AccountManager(_mockAccountRepository.Object, _mapper);
+           var accountManager = new AccountManager(_mockAccountRepository.Object, _mockTransationRepository.Object, _mapper);
 
             //Act
 
@@ -88,34 +90,6 @@ namespace ExpenseTracker.Case.Test.Account
             result.Description.Should().Be(accountCreateDto.Description);
             result.AppUserId.Should().Be(accountCreateDto.AppUserId);   
         }
-
-
-        //[Fact]
-        //public async Task CreateAccount_WhenMappingIsIncorrect_ReturnsNull()
-        //{
-        //    //Arrange
-        //    var accountCreateDto = new AccountCreateDto
-        //    {
-        //        AppUserId = 1,
-        //        Name = "Test Account",
-        //        Currency = Currency.USD,
-        //        Description = "Test Description"
-        //    };
-
-        //    // Simulate incorrect mapping by using a different class for Account
-        //    var account = _mapper.Map<CoreLayer.Entities.Account>(accountCreateDto);
-
-        //    _mockAccountRepository.Setup(x => x.CreateAsync(It.IsAny<CoreLayer.Entities.Account>()))
-        //      .ReturnsAsync((CoreLayer.Entities.Account createdAccount) => createdAccount);
-
-        //    var accountManager = new AccountManager(_mockAccountRepository.Object, _mapper);
-
-        //    //Act
-        //    var result = await accountManager.CreateAccount(accountCreateDto);
-
-        //    //Assert
-        //    result.Should().BeNull();
-        //}
 
     }
 }

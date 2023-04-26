@@ -24,6 +24,12 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers.User
             _roleManager = roleManager;
         }
 
+        /// <summary>
+        /// Dto'dan gönderilen bilgilere göre kullanıcı kayıt işlemi
+        /// </summary>
+        /// <param name="userRegisterDto">Kullanıcının kayıtlı bilgileri</param>
+        /// <returns>Başarılı kayıt işleminin sonucunu gösteren IdentityResult nesnesi</returns>
+        /// <exception cref="InvalidOperationException">Kullanıcı girilen e-posta ile daha önceden kayıt olduysa</exception>
         public async Task<IdentityResult> RegisterAsync(UserRegisterDto userRegisterDto)
         {
             var user =await _userManager.FindByEmailAsync(userRegisterDto.Email);

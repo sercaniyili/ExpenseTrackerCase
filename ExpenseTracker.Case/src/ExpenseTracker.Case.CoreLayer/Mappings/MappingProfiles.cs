@@ -33,7 +33,7 @@ namespace ExpenseTracker.Case.CoreLayer.Mappings
             //transaction
             CreateMap<Transaction, TransactionListDto>()
                   .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.ToString()))
-                   .ForMember(dest => dest.AmountWithCurrency, opt => opt.MapFrom(src => $"{src.Amount} {src.Account.Currency}"));
+                   .ForMember(dest => dest.Amount, opt => opt.MapFrom(src => $"{src.Amount} {src.Account.Currency}"));
 
             CreateMap<Transaction, TransactionCreateDto>()
                 .ReverseMap();

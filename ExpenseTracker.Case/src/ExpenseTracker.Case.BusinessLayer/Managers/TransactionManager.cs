@@ -30,15 +30,26 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Tüm işlemleri ilgili hesap verileri ile listeler
+        /// </summary>
+        /// <returns>işlemler</returns>
         public async Task<IEnumerable<TransactionListDto>> GetAllTransactions()
         {
             var transactions = await _transactionRepository.GetAllAsyncQueryable()
            .Include(c => c.Account)
            .ToListAsync();
             var mappedTransactions = _mapper.Map<IEnumerable<TransactionListDto>>(transactions);
-            return _mapper.Map<IEnumerable<TransactionListDto>>(mappedTransactions);
+            var result = _mapper.Map<IEnumerable<TransactionListDto>>(mappedTransactions);
+            return result;
         }
 
+        /// <summary>
+        /// İşlem oluşturulur, validasyonlar yapılır, işlemde yer alan hesap bakiyesi güncellenir
+        /// </summary>
+        /// <param name="transactionCreateDto">işlem oluşturmak için kullanılan girdiler</param>
+        /// <returns>oluşturulan işlem</returns>
+        /// validasyon hatası olursa hata fırlatılır
         public async Task<TransactionCreateDto> CreateTransaction(TransactionCreateDto transactionCreateDto)
         {
             var transactions = _mapper.Map<Transaction>(transactionCreateDto);
@@ -53,6 +64,12 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
             return result;
         }
 
+        /// <summary>
+        /// Belirtilen id'ye sahip işlemi siler
+        /// </summary>
+        /// <param name="id">silinecek işlem id'si</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException">belirtilen id'ye sahip işlem yoksa</exception>
         public async Task DeleteTransaction(int id)
         {
             var transactions = await _transactionRepository.GetByIdAsync(id);
@@ -62,11 +79,16 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
             await _transactionRepository.DeleteAsync(id);
         }
 
+        /// <summary>
+        /// işlemleri kriterlere göre listeler
+        /// </summary>
+        /// <param name="searchDto">aranacak işlem kriterlerini içeren dto</param>
+        /// <returns>arama sonuçlarını içeren IEnumerable TransactionSearchDto nesnesi</returns>
         public async Task<IEnumerable<TransactionListDto>> SearchTransactions(TransactionSearchDto searchDto)
         {
             var query = await _transactionRepository.GetAllAsyncQueryable()
-          .Include(c => c.Account)
-          .ToListAsync();
+             .Include(c => c.Account)
+             .ToListAsync();
 
             if (searchDto.MinAmount.HasValue)
             {
@@ -85,12 +107,16 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
 
 
             var mappedTransactions = _mapper.Map<IEnumerable<TransactionListDto>>(query);
-            return _mapper.Map<IEnumerable<TransactionListDto>>(mappedTransactions);
+            var result =_mapper.Map<IEnumerable<TransactionListDto>>(mappedTransactions);
+            return result;
         }
 
-
-
-        //privateUpdateAccountBalanceMethod
+        /// <summary>
+        /// işlem yapılan hesabın bakiyesi güncellenir
+        /// </summary>
+        /// <param name="transactionCreateDto">yeni işlem yapılacak hesap verileri</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException">işlem tutarı 0 ise geçersiz işlem</exception>
         private async Task UpdateAccountBalance(TransactionCreateDto transactionCreateDto)
         {
             var account = await _transactionRepository.FindAccountById(transactionCreateDto.AccountId);
@@ -105,6 +131,6 @@ namespace ExpenseTracker.Case.BusinessLayer.Managers
             await _transactionRepository.SaveTransactionChangesAsync();
         }
 
-      
+   
     }
 }

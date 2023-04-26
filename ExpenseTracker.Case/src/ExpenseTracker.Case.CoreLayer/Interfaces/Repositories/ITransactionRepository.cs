@@ -1,4 +1,5 @@
-﻿using ExpenseTracker.Case.CoreLayer.Entities;
+﻿using ExpenseTracker.Case.CoreLayer.DTOs.Transaction;
+using ExpenseTracker.Case.CoreLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,4 @@ namespace ExpenseTracker.Case.CoreLayer.Interfaces.Repositories
         public Task<Account> FindAccountById(int id);
         public Task<int> SaveTransactionChangesAsync();
     }
-
 }

@@ -18,6 +18,11 @@ namespace ExpenseTracker.Case.WebAPI.Controllers
             _userLoginManager = userLoginManager;
         }
 
+        /// <summary>
+        /// Verilen bilgilere göre yeni kullanıcı oluşturulur
+        /// </summary>
+        /// <param name="userRegisterDto">verilen bilgiler</param>
+        /// <returns>Başarılı kullanıcı kayıt işleminin sonucunu gösteren IdentityResult nesnesi veya başarısız olursa bad request</returns>
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterDto userRegisterDto)
         {
@@ -37,6 +42,11 @@ namespace ExpenseTracker.Case.WebAPI.Controllers
              return BadRequest();
         }
 
+        /// <summary>
+        /// Verilen kullancıı bilgileriyle oturum açılır
+        /// </summary>
+        /// <param name="userLoginrDto">kullanıcı bilgileri</param>
+        /// <returns>giriş başarısız olursa hata başarılı olursa 200 kodu ile jwt token</returns>
         [HttpPost("login")]
         public async Task<ActionResult<UserLoginResponseDto>> Login([FromBody] UserLoginDto userLoginrDto)
         {
