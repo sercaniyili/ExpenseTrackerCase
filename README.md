@@ -33,8 +33,9 @@ Local klasöre projeyi klonlamak için :
 Veritababı bağlantısı için "appsettings.json" dosyasına aşağıdakinu kopyalayın:
 ```
   "ConnectionStrings": {
-    "DefaultConnection": "Server=DESKTOP-UKFGN49;Database=ExpenseTrackerCaseDb; Trusted_Connection=True;"
-  },
+    "DefaultConnection": "Server=Your_Server_Name;Database=Your_Database_Name;Trusted_Connection=True;MultipleActiveResultSets=true"
+}
+
 ```
 
 Veritabanını ve Tabloları oluşturmak için  "Package Manager Console" açıp aşağıdakini yazın :
