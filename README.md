@@ -45,7 +45,7 @@ Veritabanını ve Tabloları oluşturmak için  "Package Manager Console" açıp
 <br/>
 
 
-- API için gerekli önyüz tasarımı
+- Projenin üstünden geliştirildiği entegre olması varsayılan önyüz
 
 <img src="https://github.com/sercaniyili/ExpenseTrackerCase/blob/main/images/project.png" />
 
@@ -125,7 +125,7 @@ Veritabanını ve Tabloları oluşturmak için  "Package Manager Console" açıp
 <img src="https://github.com/sercaniyili/ExpenseTrackerCase/blob/main/images/transactions.png" />
 
 
-- Proje için yazılmış unit tests
+- Proje için yazılmış unit testler
 
 <img src="https://github.com/sercaniyili/ExpenseTrackerCase/blob/main/images/tests.png" />
 
